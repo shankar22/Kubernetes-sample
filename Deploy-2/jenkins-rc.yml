@@ -1,0 +1,20 @@
+apiVersion: v1
+kind: ReplicationController
+metadata:
+  name: tomjen-rc
+spec:
+  replicas: 3
+  selector:
+    app: tomjen
+    version: v1
+  template:
+    metadata:
+      labels:
+        app: tomjen
+        version: v1
+    spec:
+      containers:
+      - name: tomjen-pod
+        image: bpraveen18/tomjen
+        ports:
+        - containerPort: 8080
